@@ -1,0 +1,9 @@
+Kaggle Dataset Link: https://www.kaggle.com/datasets/huthayfahodeb/captcha-dataset
+
+Kaggle DataSet Download Code(google Colab):
+``import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("huthayfahodeb/captcha-dataset")
+
+print("Path to dataset files:", path)``
