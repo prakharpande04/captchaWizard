@@ -1,50 +1,49 @@
-🧠 CAPTCHA Text Recognition
-This project aims to develop a deep learning system to recognize alphanumeric text from CAPTCHA images using a ResNet-based neural network. The ultimate goal is to automate CAPTCHA decoding with high accuracy and reliability.
+# CAPTCHA Text Recognition 🧠🔐
 
-🔍 Project Overview
-📸 Uses ResNet50 architecture (pre-trained on ImageNet) as the base feature extractor.
+This project focuses on building a deep learning model to automatically recognize text from CAPTCHA images using a **ResNet-based architecture**. The system aims to streamline CAPTCHA decoding using computer vision and deep learning techniques.
 
-🖼️ Designed for CAPTCHA images resized to (200×50) pixels.
+---
 
-🔢 Outputs a 6-character prediction corresponding to the text in the CAPTCHA image.
+## ❓ Problem Statement
 
-🧮 Trained using Mean Squared Error (MSE) loss — a regression-based approach to predict character indices.
+CAPTCHAs are used as security checkpoints to differentiate humans from bots when accessing websites. This project aims to break CAPTCHAs using a learning-based approach, leveraging deep neural networks.
 
-📁 Dataset
-The dataset is divided into three subsets:
+---
 
-🧪 Training Set: 6,000 CAPTCHA images used for training the model.
+## 🚀 Features
 
-🧯 Validation Set: 2,000 images used during model validation while training.
+- Uses a dataset of **6,000 training**, **2,000 test**, and **2,000 validation CAPTCHA images**.
+- Employs **ResNet50** (pre-trained on ImageNet) as a feature extractor.
+- Predicts **6-character alphanumeric CAPTCHA text** per image.
+- Trained using a **regression-based approach with MSE loss**.
+- Image preprocessing pipeline handles **variable input sizes**.
+- Simple prediction supported for **single-image inference**.
+- Model serves as a baseline for further experimentation (e.g., CRNN + CTC).
 
-🧾 Test Set: 2,000 images used for evaluating final model performance.
+---
 
-Each image is accompanied by a ground-truth label, representing the actual CAPTCHA text.
+## 🧠 Model Architecture
 
-🧱 Model Architecture
+| Layer Type        | Description                                    |
+|-------------------|------------------------------------------------|
+| **Base Model**    | `ResNet50` with `include_top=False`, ImageNet weights |
+| **Pooling**       | Global Average Pooling 2D                      |
+| **Dense Layer 1** | 512 units, Activation: ReLU                    |
+| **Dense Layer 2** | 256 units, Activation: ReLU                    |
+| **Output Layer**  | 6 units (regression output for character encoding) |
 
-Layer Type	Configuration
-Base Model	ResNet50(weights='imagenet', include_top=False)
-Pooling Layer	Global Average Pooling 2D
-Dense Layer 1	512 Units, Activation: ReLU
-Dense Layer 2	256 Units, Activation: ReLU
-Output Layer	6 Units (One per character index)
-⚙️ Current Status
-✅ Built using TensorFlow / Keras.
+---
 
-🔧 Currently uses a basic ResNet-based model.
+## ⚙️ Current Status
 
-📉 Achieved promising results with:
+- ✅ Implemented using **TensorFlow/Keras**
+- 🔧 Basic ResNet-based architecture tested
+- 📉 Achieved:
+  - Training Loss: `0.0719`
+  - Test Loss: `0.1021`
+- 🔜 To Do:
+  - Automate full prediction pipeline
+  - Improve accuracy via better loss functions (CTC)
+  - Explore character-wise decoding with CRNN
 
-Training Loss: 0.0719
-
-Test Loss: 0.1021
-
-🛠️ Next Steps:
-
-Improve accuracy with better decoding strategy (e.g., CTC Loss).
-
-Automate the prediction workflow and pipeline.
-
-Explore augmentations and sequence models (e.g., CRNN).
-
+---
